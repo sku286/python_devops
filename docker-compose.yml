@@ -10,7 +10,7 @@ services:
       - "8001:8001"
     networks:
       - kiwee_net
-	command: python manage.py runserver 0.0.0.0:8001
+    command: python manage.py runserver 0.0.0.0:8001
 
   kw-apis:
     build:
@@ -23,7 +23,7 @@ services:
       - kiwee_net
     depends_on:
       - kw-connector
-	command: python manage.py runserver 0.0.0.0:8002
+    command: python manage.py runserver 0.0.0.0:8002
 
   kw-gui:
     build:
@@ -36,7 +36,7 @@ services:
       - kiwee_net
     depends_on:
       - kw-apis
-	command: python manage.py runserver 0.0.0.0:8080
+    command: python manage.py runserver 0.0.0.0:8080
 
 networks:
   kiwee_net:
