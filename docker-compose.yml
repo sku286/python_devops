@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  kw-connector:
+    build:
+      context: kiwee_connector/
+      args:
+        NAME: KIWEE_CONNECTOR
+    ports:
+      - "8001:8001"
+    networks:
+      - kiwee_net
+	command: python manage.py runserver 0.0.0.0:8001
+
+  kw-apis:
+    build:
+      context: kiwee_dashboard_api/
+      args:
+        NAME: KIWEE_DASHBOARD_API
+    ports:
+      - "8002:8002"
+    networks:
+      - kiwee_net
+    depends_on:
+      - kw-connector
+	command: python manage.py runserver 0.0.0.0:8002
+
+  kw-gui:
+    build:
+      context: kiwee_gui/
+      args:
+        NAME: KIWEE_DASHBOARD_API
+    ports:
+      - "8000:8080"
+    networks:
+      - kiwee_net
+    depends_on:
+      - kw-apis
+	command: python manage.py runserver 0.0.0.0:8080
+
+networks:
+  kiwee_net:
+    driver: bridge
