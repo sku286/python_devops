@@ -7,10 +7,9 @@ services:
       args:
         NAME: KIWEE_CONNECTOR
     ports:
-      - "8001:8001"
+      - "8002:8002"
     networks:
       - kiwee_net
-    command: python manage.py runserver 0.0.0.0:8001
 
   kw-apis:
     build:
@@ -18,12 +17,12 @@ services:
       args:
         NAME: KIWEE_DASHBOARD_API
     ports:
-      - "8002:8002"
-    networks:
-      - kiwee_net
+      - "8001:8001"
     depends_on:
       - kw-connector
-    command: python manage.py runserver 0.0.0.0:8002
+    networks:
+      - kiwee_net
+
 
   kw-gui:
     build:
@@ -31,12 +30,11 @@ services:
       args:
         NAME: KIWEE_DASHBOARD_API
     ports:
-      - "8000:8080"
-    networks:
-      - kiwee_net
+      - "8000:8000"
     depends_on:
       - kw-apis
-    command: python manage.py runserver 0.0.0.0:8080
+    networks:
+      - kiwee_net
 
 networks:
   kiwee_net:
