@@ -1,4 +1,4 @@
-#!/bin/s
+#!/bin/sh
 
 # defining the branch to pull code
 BRANCH=${1:-dev}
