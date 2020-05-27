@@ -31,11 +31,30 @@ services:
         NAME: KIWEE_DASHBOARD_API
     ports:
       - "8000:8000"
+    volumes:
+      - static_volume:/src/assest/
     depends_on:
       - kw-apis
     networks:
       - kiwee_net
 
+
+  nginx:
+    build:
+      context: nginx/
+    ports:
+      - "8080:80"
+    volumes:
+      - static_volume:/src/assest/
+    depends_on:
+      - kw-gui
+    networks:
+      - kiwee_net
+
+
 networks:
   kiwee_net:
     driver: bridge
+
+volumes:
+  static_volume:
