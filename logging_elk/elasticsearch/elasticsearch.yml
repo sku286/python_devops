@@ -1,18 +1,15 @@
 cluster.name: "my-elasticsearch-cluster"
 network.host: 0.0.0.0
 
-xpack.license.self_generated.type=basic
-xpack.security.enabled=true
-xpack.monitoring.enabled=false
-xpack.ml.enabled=false
-xpack.graph.enabled=false
-xpack.watcher.enabled=false
-
-#xpack.security.enabled=true
-#xpack.security.transport.ssl.enabled: true
+xpack.license.self_generated.type: basic
+xpack.security.enabled: true
+xpack.monitoring.enabled: true
+xpack.ml.enabled: false
+xpack.graph.enabled: false
+xpack.watcher.enabled: false
+xpack.security.transport.ssl.enabled: true
 #xpack.security.transport.ssl.keystore.type: PKCS12
 #xpack.security.transport.ssl.verification_mode: certificate
 #xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
 #xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
 #xpack.security.transport.ssl.truststore.type: PKCS12
-
