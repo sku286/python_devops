@@ -30,7 +30,7 @@ services:
     build:
       context: kiwee_gui/
       args:
-        NAME: KIWEE_DASHBOARD_API
+        NAME: KIWEE_GUI
     ports:
       - "8000:8000"
     volumes:
