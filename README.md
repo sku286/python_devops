@@ -11,6 +11,7 @@ Enter inside the directory and run the startup script.
 Run the below command to collect the static files in volume.
 
 `docker-compose exec kw-gui python manage.py collectstatic --no-input --clear`
+
 `docker-compose exec kw-apis python manage.py collectstatic --no-input --settings=kiwee_dashboard_api.settings.production`
 
 Now the project can be accessed using the url at port 8080.
