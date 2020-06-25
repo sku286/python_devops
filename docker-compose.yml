@@ -7,7 +7,7 @@ services:
       args:
         NAME: KIWEE_CONNECTOR
     ports:
-      - "8002:8002"
+      - "8009:8009"
     networks:
       - kiwee_net
 
@@ -17,7 +17,9 @@ services:
       args:
         NAME: KIWEE_DASHBOARD_API
     ports:
-      - "8001:8001"
+      - "8007:8007"
+    volumes:
+      - static_volume:/src/assest/
     depends_on:
       - kw-connector
     networks:
@@ -44,6 +46,7 @@ services:
       context: nginx/
     ports:
       - "8080:80"
+      - "8082:82"
     volumes:
       - static_volume:/src/assest/
     depends_on:
@@ -51,10 +54,10 @@ services:
     networks:
       - kiwee_net
 
-
 networks:
   kiwee_net:
     driver: bridge
 
 volumes:
   static_volume:
+
