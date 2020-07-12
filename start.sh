@@ -4,9 +4,8 @@
 BRANCH=${1:-dev}
 
 # clone all repos required
-git clone --single-branch --branch "$BRANCH" git@gitlab.com:kiwee_core/kiwee_connector.git
-git clone --single-branch --branch "$BRANCH" git@gitlab.com:kiwee_core/kiwee_dashboard_api.git
-git clone --single-branch --branch "$BRANCH" git@gitlab.com:kiwee_core/kiwee_gui.git
+git clone --single-branch --branch "$BRANCH" <Project 1 >
+git clone --single-branch --branch "$BRANCH" <Project 2>
 
 # running the containers
 docker-compose up
