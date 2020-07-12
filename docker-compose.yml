@@ -1,42 +1,30 @@
 version: '3'
 
 services:
-  kw-connector:
+  apis:
     build:
-      context: kiwee_connector/
+      context: dashboard_api/
       args:
-        NAME: KIWEE_CONNECTOR
-    ports:
-      - "8009:8009"
-    networks:
-      - kiwee_net
-
-  kw-apis:
-    build:
-      context: kiwee_dashboard_api/
-      args:
-        NAME: KIWEE_DASHBOARD_API
+        NAME: DASHBOARD_API
     ports:
       - "8007:8007"
     volumes:
       - static_volume:/src/assest/
-    depends_on:
-      - kw-connector
     networks:
       - kiwee_net
 
 
-  kw-gui:
+  web:
     build:
-      context: kiwee_gui/
+      context: gui/
       args:
-        NAME: KIWEE_GUI
+        NAME: GUI
     ports:
       - "8000:8000"
     volumes:
       - static_volume:/src/assest/
     depends_on:
-      - kw-apis
+      - apis
     networks:
       - kiwee_net
 
@@ -50,7 +38,7 @@ services:
     volumes:
       - static_volume:/src/assest/
     depends_on:
-      - kw-gui
+      - web
     networks:
       - kiwee_net
 
